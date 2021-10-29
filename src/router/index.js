@@ -4,6 +4,7 @@ const Home = () => import('../views/home/Home')
 const Category = () => import('../views/category/Category')
 const Profile = () => import('../views/profile/Profile')
 const Shopcart = () => import('../views/shopcart/Shopcart')
+const Detail = () => import('../views/detail/Detail')
 
 // 1.安装router
 
@@ -28,13 +29,16 @@ const routes = [
   {
     path: '/shopcart',
     component: Shopcart
+  },
+  {
+    path: '/detail/:iid',
+    component: Detail
   }
 ]
 const router = createRouter({
   // 4. 内部提供了 history 模式的实现。为了简单起见，我们在这里使用 hash 模式。
   // history: createWebHistory(process.env.VUE_APP_ROUTER),
   history: createWebHashHistory(),
-  // mode:'history',
   routes, // `routes: routes` 的缩写
 })
 

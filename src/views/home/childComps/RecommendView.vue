@@ -2,7 +2,7 @@
   <div class="recommoned">
     <div v-for="item in recommends" class="recommoned-item">
       <a :href="item.link">
-        <img :src="item.image" alt="">
+        <img :src="item.image" alt="" @load="recommendImgLoad">
         <div>{{item.title}}</div>
       </a>
     </div>
@@ -19,7 +19,22 @@
           return []
         }
       }
-    }
+    },
+    data() {
+      return {
+        counter: 0,
+        imagesLength: 0
+      }
+    },
+    methods: {
+      recommendImgLoad() {
+        // 判断，所有的图片都加载完成，那么进行一次回调就可以了
+        if (++this.counter === this.recommends.length) {
+          this.$emit('recommendImgLoad')
+          console.log("图片加载完成");
+        }
+      }
+    },
   }
 </script>
 
